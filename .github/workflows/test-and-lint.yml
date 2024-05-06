@@ -7,9 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: poetry run pytest
+        run: |
+          pip install poetry
+          pip install pytest
+          poetry run pytest
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: lint
-        run: poetry run flake8 gendiff
+        run: |
+          pip install poetry
+          pip install flake8
+          poetry run flake8 gendiff
