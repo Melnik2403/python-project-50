@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: make test
+        run: poetry run pytest
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: lint
-        run: make lint
+        run: poetry run flake8 gendiff
