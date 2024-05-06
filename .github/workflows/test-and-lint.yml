@@ -6,16 +6,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: test
         run: |
           pip install poetry
           pip install pytest
+          poetry install
           poetry run pytest
   lint:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: lint
         run: |
           pip install poetry
           pip install flake8
+          poetry install
           poetry run flake8 gendiff
