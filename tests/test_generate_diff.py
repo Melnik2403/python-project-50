@@ -9,5 +9,5 @@ def test_generate_diff():
               '+ timeout: 20\n'
               '+ verbose: true\n}')
 
-    assert generate_diff('/home/ivan/python-project-50/tests/file1.json',
-                         '/home/ivan/python-project-50/tests/file2.json') == result
+    assert generate_diff('file1.json',
+                         'file2.json') == result
