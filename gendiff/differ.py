@@ -1,9 +1,7 @@
-import json
+from gendiff import reader
 
 
-def differ(file_path1, file_path2):
-    file1 = json.load(open(file_path1))
-    file2 = json.load(open(file_path2))
+def differ(file1: dict, file2: dict):
     same = []
     diff1 = []
     diff2 = []
@@ -24,7 +22,7 @@ def differ(file_path1, file_path2):
 
 
 def formatter(diff):
-    same = (['    ' + i.lower() + '\n' for i in diff[0]])
+    same = ['    ' + i.lower() + '\n' for i in diff[0]]
     diff1 = ['  - ' + i.lower() + '\n' for i in diff[1]]
     diff2 = ['  + ' + i.lower() + '\n' for i in diff[2]]
     sorting = same + diff1 + diff2
@@ -34,5 +32,7 @@ def formatter(diff):
 
 
 def generate_diff(file_path1, file_path2):
-    diff = differ(file_path1, file_path2)
+    file1 = reader.read(file_path1)
+    file2 = reader.read(file_path2)
+    diff = differ(file1, file2)
     return formatter(diff)
