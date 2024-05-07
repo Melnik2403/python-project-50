@@ -24,15 +24,15 @@ def differ(file_path1, file_path2):
 
 
 def formatter(diff):
-    same = (['  ' + i.lower() + '\n' for i in diff[0]])
-    diff1 = ['- ' + i.lower() + '\n' for i in diff[1]]
-    diff2 = ['+ ' + i.lower() + '\n' for i in diff[2]]
+    same = (['    ' + i.lower() + '\n' for i in diff[0]])
+    diff1 = ['  - ' + i.lower() + '\n' for i in diff[1]]
+    diff2 = ['  + ' + i.lower() + '\n' for i in diff[2]]
     sorting = same + diff1 + diff2
-    sorting.sort(key=lambda x: x[2])
+    sorting.sort(key=lambda x: x[4])
     output = ''.join(sorting)
-    return '{\n' + output + '}'
+    return '{\n' + output + '}\n'
 
 
-def generate_diff(file_path1, filepath2):
-    diff = differ(file_path1, filepath2)
+def generate_diff(file_path1, file_path2):
+    diff = differ(file_path1, file_path2)
     return formatter(diff)
